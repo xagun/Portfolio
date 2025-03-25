@@ -69,8 +69,7 @@ export const Intro = () => {
       >
         <Button asChild size="lg">
           <Link href="#contact">
-            Let&apos;s get connected{' '}
-            <Icons.arrowRight className="ml-2 size-4" />
+            Let&apos;s Connect <Icons.arrowRight className="ml-2 size-4" />
           </Link>
         </Button>
         <Button
