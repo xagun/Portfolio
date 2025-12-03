@@ -54,10 +54,10 @@ export const Intro = () => {
         }}
         className="text-muted-foreground max-w-lg"
       >
-        A passionate front-end developer from Nepal. I thrive on crafting
-        dynamic and user-friendly websites and applications that deliver
-        seamless experiences. Beyond the web, I have a deep love for mobile app
-        development,
+        Frontend Developer with a strong focus on React and Next.js, building
+        responsive, user-friendly web applications. I enjoy solving complex
+        problems, collaborating with cross-functional teams, and I&apos;m
+        actively expanding my skills in backend technologies.
       </motion.p>
       <motion.div
         initial={{ opacity: 0, y: 100 }}

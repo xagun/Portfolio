@@ -21,18 +21,24 @@ export const About = () => {
       <SectionHeading heading="About Me" />
       <div className="-mt-5 max-w-2xl text-center leading-7">
         <p className="mb-4">
-          I&apos;m Sagun Shrestha, I&apos;m a front-end developer from Nepal.
-          I&apos;ve been learning programming for over 3 years. After I started
-          high school, I decided to pursue my passion for programming. My
-          favorite part of programming is the problem-solving aspect. I love the
-          feeling of finally figuring out a solution to a problem. I&apos;ve had
-          the opportunity to work on several exciting projects during my
-          learning journey, ranging from personal projects to collaborative
-          ventures. My core stack is React, Next.js,JavaScript/TypeScript, and
-          Tailwind CSS. I am always looking to learn new technologies. I have
-          also worked on some laravel projects contribution my knowledge. I
-          interest in mobile app development has ventured me into learning React
-          Native and Flutter.
+          I&apos;m Sagun Shrestha, a frontend developer from Nepal with
+          experience building production-ready web applications for logistics,
+          education, and marketing domains. I enjoy turning ideas into clean,
+          performant interfaces and collaborating closely with designers and
+          backend teams to deliver pixel-perfect experiences.
+        </p>
+        <p className="mb-4">
+          My core stack includes JavaScript, TypeScript, React, Next.js, HTML,
+          CSS/SCSS, Tailwind CSS, and component libraries like Chakra UI. I have
+          also worked with PHP and Laravel, and I&apos;m actively growing my
+          skills in backend technologies and APIs to become more versatile
+          across the stack.
+        </p>
+        <p>
+          I&apos;m comfortable working in team-based environments, mentoring
+          juniors, and owning features from idea to deployment. Continuous
+          learning, problem-solving, and building impactful products are what
+          keep me motivated.
         </p>
       </div>
       <Skills />

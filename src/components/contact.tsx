@@ -63,7 +63,7 @@ export const Contact = () => {
             >
               <a
                 className="underline-offset-4 hover:underline"
-                href="mailto:skolakmichal1@gmail.com"
+                href="mailto:xagun.shrestha@gmail.com"
               >
                 xagun.shrestha@gmail.com
               </a>
