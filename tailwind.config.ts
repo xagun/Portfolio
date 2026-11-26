@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import tailwindcssAnimate from 'tailwindcss-animate';
 
 const config = {
   darkMode: ['class'],
@@ -59,9 +60,23 @@ const config = {
       borderRadius: {
         md: '0.3rem',
       },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        'marquee-reverse': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+      },
+      animation: {
+        marquee: 'marquee 35s linear infinite',
+        'marquee-reverse': 'marquee-reverse 35s linear infinite',
+      },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;
 
 export default config;

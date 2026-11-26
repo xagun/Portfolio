@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
@@ -22,7 +23,7 @@ module.exports = {
       },
     ],
     'sort-imports': 'off',
-    'tailwindcss/no-custom-classname': 'off',
+    // 'tailwindcss/no-custom-classname': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     'simple-import-sort/imports': [
       2,
@@ -40,7 +41,7 @@ module.exports = {
         ],
       },
     ],
-    'tailwindcss/classnames-order': 'warn', // Add this line
+    // 'tailwindcss/classnames-order': 'warn', // Add this line
   },
   settings: {
     tailwindcss: {

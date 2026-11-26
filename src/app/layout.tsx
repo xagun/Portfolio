@@ -4,7 +4,9 @@ import { PropsWithChildren } from 'react';
 import type { Metadata } from 'next';
 
 import { ActiveSectionProvider } from '@/components/active-section-provider';
+import { CustomCursor } from '@/components/custom-cursor';
 import { ThemeProvider } from '@/components/theme-provider';
+import { ThemeTransition } from '@/components/theme-transition';
 import { Toaster } from '@/components/toaster';
 import { fonts } from '@/lib/fonts';
 import { siteConfig } from '@/lib/site-config';
@@ -35,6 +37,8 @@ const RootLayout = ({ children }: PropsWithChildren) => {
       <body className={cn('min-h-screen font-sans', fonts)}>
         <ThemeProvider attribute="class">
           <ActiveSectionProvider>
+            <CustomCursor />
+            <ThemeTransition />
             {children}
             <Toaster position="bottom-left" />
           </ActiveSectionProvider>

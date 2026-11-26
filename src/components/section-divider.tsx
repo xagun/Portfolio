@@ -2,13 +2,18 @@
 
 import { motion } from 'framer-motion';
 
+import { fadeInUp } from '@/lib/animations';
+
 export const SectionDivider = () => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.125 }}
-      className="bg-muted my-5 h-16 w-1 rounded-full sm:my-10"
-    ></motion.div>
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="relative my-10 h-16 w-1 sm:my-16"
+    >
+      <div className="bg-muted absolute inset-0 rounded-full" />
+    </motion.div>
   );
 };
