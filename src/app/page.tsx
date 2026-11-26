@@ -1,28 +1,27 @@
 import { About } from '@/components/about';
+import { AnimatedBackground } from '@/components/animated-background';
 import { Contact } from '@/components/contact';
 import { Experience } from '@/components/experience';
-// import { Experience } from '@/components/experience';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { Intro } from '@/components/intro';
 import { Projects } from '@/components/projects';
-import { SectionDivider } from '@/components/section-divider';
-import { ThemeToggle } from '@/components/theme-toggle';
 
 const Home = async () => {
   return (
     <>
-      <div className="container flex flex-col items-center">
-        <Header />
+      <AnimatedBackground />
+      <Header />
+      <main className="relative z-10 flex flex-col items-center">
         <Intro />
-        <SectionDivider />
-        <About />
-        <Projects />
-        <Experience />
-        <Contact />
-        <Footer />
-      </div>
-      <ThemeToggle className="fixed bottom-5 right-5 hidden sm:bottom-8 sm:right-8 sm:flex" />
+        <div className="container flex w-full flex-col items-center">
+          <About />
+          <Projects />
+          <Experience />
+          <Contact />
+          <Footer />
+        </div>
+      </main>
     </>
   );
 };

@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-import { Button } from '@/components/button';
 import { Icons } from '@/components/icons';
+import { MagneticCursor } from '@/components/magnetic-cursor';
 import { useSectionInView } from '@/hooks/use-section-in-view';
 
 export const Intro = () => {
@@ -14,102 +14,136 @@ export const Intro = () => {
     <section
       ref={ref}
       id="home"
-      className="my-10 flex scroll-mt-96 flex-col items-center gap-4 text-center sm:mt-20"
+      className="relative flex min-h-dvh w-full scroll-mt-20 flex-col items-center justify-center px-6 text-center"
     >
-      {/* <motion.a
-        initial={{ opacity: 0, scale: 0 }}
+      {/* Avatar placeholder */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{
-          type: 'tween',
-          duration: 0.2,
-        }}
-        href="https://github.com/Skolaczk/next-starter"
-        className="bg-muted rounded px-3 py-1 text-sm font-medium"
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="border-border from-primary/30 mb-8 size-20 overflow-hidden rounded-full border bg-gradient-to-br to-purple-500/30"
       >
-        🎉
-        <span className="ml-3">Check out my new project</span>
-      </motion.a> */}
-      <motion.p
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.1,
-        }}
-        className="text-muted-foreground max-w-lg"
-      >
-        Hello, I&apos;m
-      </motion.p>
-      <motion.h1
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-3xl font-bold leading-tight tracking-tighter sm:text-4xl"
-      >
-        SAGUN SHRESTHA
-      </motion.h1>
-      <motion.p
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.1,
-        }}
-        className="text-muted-foreground max-w-lg"
-      >
-        Frontend Developer with a strong focus on React and Next.js, building
-        responsive, user-friendly web applications. I enjoy solving complex
-        problems, collaborating with cross-functional teams, and I&apos;m
-        actively expanding my skills in backend technologies.
-      </motion.p>
-      <motion.div
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 0.1,
-        }}
-        className="flex flex-row gap-2"
-      >
-        <Button asChild size="lg">
-          <Link href="#contact">
-            Let&apos;s Connect <Icons.arrowRight className="ml-2 size-4" />
-          </Link>
-        </Button>
-        <Button
-          variant="secondary"
-          size="lg"
-          className="hidden sm:flex"
-          asChild
-        >
-          <a href="/Sagun Shrestha.pdf" download>
-            Download CV <Icons.download className="ml-2 size-4" />
-          </a>
-        </Button>
+        {/* Replace with: <Image src="/avatar.jpg" alt="Sagun" fill className="object-cover" /> */}
+        <div className="text-primary flex size-full items-center justify-center text-2xl font-bold">
+          S
+        </div>
       </motion.div>
-      <motion.div
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{
-          delay: 0.2,
-        }}
-        className="flex flex-row gap-2"
+
+      {/* Greeting */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="text-muted-foreground mb-2 text-lg font-light"
       >
-        <Button variant="secondary" size="icon" asChild>
+        Hello! I&apos;m
+      </motion.p>
+
+      {/* Name */}
+      <motion.h1
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-foreground text-5xl font-semibold leading-none tracking-tight sm:text-7xl md:text-8xl"
+      >
+        Sagun Shrestha
+      </motion.h1>
+
+      {/* Role */}
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="text-muted-foreground mt-2 text-4xl font-light sm:text-6xl md:text-7xl"
+      >
+        Software Engineer
+      </motion.h2>
+
+      {/* Subtitle */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.45 }}
+        className="text-muted-foreground mt-6 max-w-md text-base"
+      >
+        I build responsive, user-friendly web applications with React & Next.js
+      </motion.p>
+
+      {/* CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.6 }}
+        className="mt-8 flex items-center gap-4"
+      >
+        <MagneticCursor strength={0.2}>
+          <Link
+            href="#contact"
+            className="border-foreground/30 text-foreground hover:border-foreground hover:bg-foreground hover:text-background flex items-center gap-2 rounded-full border px-7 py-3 text-sm font-medium transition-all"
+          >
+            Let&apos;s talk
+            <Icons.arrowRight className="size-4" />
+          </Link>
+        </MagneticCursor>
+
+        <MagneticCursor strength={0.2}>
           <a
-            href="https://www.linkedin.com/in/xagun-shrestha"
-            aria-label="Linkedin"
+            href="/Sagun Shrestha.pdf"
             download
-            target="_blank"
+            className="border-border text-muted-foreground hover:border-foreground/40 hover:text-foreground flex items-center gap-2 rounded-full border px-7 py-3 text-sm font-medium transition-all"
           >
-            <Icons.linkedin className="size-6" />
+            Download CV
+            <Icons.download className="size-4" />
           </a>
-        </Button>
-        <Button variant="secondary" size="icon" asChild>
+        </MagneticCursor>
+      </motion.div>
+
+      {/* Social links */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.8 }}
+        className="mt-6 flex gap-4"
+      >
+        {[
+          {
+            href: 'https://www.linkedin.com/in/xagun-shrestha',
+            icon: Icons.linkedin,
+            label: 'LinkedIn',
+          },
+          {
+            href: 'https://github.com/xagun',
+            icon: Icons.github,
+            label: 'GitHub',
+          },
+        ].map(({ href, icon: Icon, label }) => (
           <a
-            href="https://github.com/xagun"
-            aria-label="Github"
+            key={label}
+            href={href}
+            aria-label={label}
             target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-foreground text-muted-foreground/60 transition-colors"
           >
-            <Icons.github className="size-6" />
+            <Icon className="size-5" />
           </a>
-        </Button>
+        ))}
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1.2 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          className="border-border flex h-9 w-5 items-start justify-center rounded-full border p-1"
+        >
+          <div className="bg-muted-foreground h-2 w-0.5 rounded-full" />
+        </motion.div>
       </motion.div>
     </section>
   );

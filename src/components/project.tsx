@@ -1,77 +1,93 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { ArrowUpRight } from 'lucide-react';
 
-import { Button } from '@/components/button';
-import { Icons } from '@/components/icons';
 import { projectsData } from '@/lib/data';
 
 type TProject = (typeof projectsData)[number];
+
+const CARD_GRADIENTS = [
+  'from-blue-950 via-indigo-900 to-slate-900',
+  'from-slate-900 via-purple-950 to-slate-950',
+  'from-emerald-950 via-teal-900 to-slate-900',
+  'from-rose-950 via-pink-900 to-slate-900',
+];
 
 type TProps = {
   project: TProject;
   index: number;
 };
 
-const fadeInAnimationVariants = {
-  initial: {
-    opacity: 0,
-    y: 100,
-  },
-  animate: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: 0.1 * index,
-    },
-  }),
-};
-
 export const Project = ({ project, index }: TProps) => {
-  const { image, title, description, technologies, links } = project;
+  const { title, category, description, links } = project;
+  const technologies: ReadonlyArray<string> = project.technologies;
+  const gradient = CARD_GRADIENTS[index % CARD_GRADIENTS.length];
 
   return (
     <motion.div
-      variants={fadeInAnimationVariants}
-      initial="initial"
-      whileInView="animate"
-      viewport={{
-        once: true,
-      }}
-      custom={index}
-      className="bg-secondary flex flex-col items-center rounded p-5 text-center md:w-1/3"
+      className="border-border bg-card group relative overflow-hidden rounded-2xl border"
+      whileHover={{ y: -4 }}
+      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
-      <div className="bg-muted w-fit rounded-full p-4">
-        <Image src={image} alt={`${title} image`} width={32} height={32} />
-      </div>
-      <h3 className="my-2 text-lg font-medium">{title}</h3>
-      <p className="text-muted-foreground">{description}</p>
-      <div className="my-3 flex flex-wrap justify-center gap-2">
-        {technologies.map((tech) => (
-          <span className="bg-muted rounded-full px-3 py-1 text-sm" key={tech}>
-            {tech}
-          </span>
-        ))}
-      </div>
-      <div className="mt-2 flex">
-        {links.preview && (
-          <Button variant="outline" asChild className="mr-2 px-5">
+      {/* Screenshot / gradient placeholder */}
+      <div
+        className={`relative h-44 w-full bg-gradient-to-br ${gradient} sm:h-52`}
+      >
+        {/* Faint grid pattern overlay */}
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
+            backgroundSize: '24px 24px',
+          }}
+        />
+
+        {/* Top bar: label + visit link */}
+        <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4">
+          <span className="text-xs font-medium text-white/60">{category}</span>
+          {links.preview && (
             <a
               href={links.preview}
-              aria-label="preview project"
               target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm transition-all hover:bg-white/20"
             >
-              <Icons.preview className="size-5" />
+              Visit <ArrowUpRight className="size-3" />
             </a>
-          </Button>
-        )}
-        {links.github && (
-          <Button variant="outline" asChild className="mr-2 px-5">
-            <a href={links.github} aria-label="github" target="_blank">
-              <Icons.githubOutline className="size-5" />
-            </a>
-          </Button>
+          )}
+        </div>
+
+        {/* Center: large initials */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-5xl font-bold text-white/10">
+            {title
+              .split(' ')
+              .slice(0, 2)
+              .map((w) => w[0])
+              .join('')}
+          </span>
+        </div>
+      </div>
+
+      {/* Card body */}
+      <div className="p-5">
+        <h3 className="text-foreground mb-2 font-semibold">{title}</h3>
+        <p className="text-muted-foreground mb-4 line-clamp-2 text-sm leading-relaxed">
+          {description}
+        </p>
+        {technologies.length > 0 && (
+          <div className="flex flex-wrap gap-1.5">
+            {technologies.map((tech) => (
+              <span
+                key={tech}
+                className="border-border bg-muted text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         )}
       </div>
     </motion.div>
